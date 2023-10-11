@@ -20,14 +20,14 @@ mongoose
   .then(() => console.log("MongoDB connected"))
   .catch((err) => console.log(err));
 
-// Use admin routes
-app.use("/api/admin", adminRoute);
-
-app.use("/", (req, res) => {
+app.get("/", (req, res) => {
   res.send("This api is working!!");
 });
 
-// Use employee routes with admin authentication middleware
+// Use admin routes
+app.use("/api/admin", adminRoute);
+
+//employee
 app.use("/api/employees", employeeRoute);
 
 app.listen(PORT, () => console.log(`Server is running on port ${PORT}`));
