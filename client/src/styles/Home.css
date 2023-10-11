@@ -1,0 +1,11 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+.frontpage {
+  background-image: url("../images//front.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 100vh;
+}
