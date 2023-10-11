@@ -58,10 +58,8 @@ const EmployeeList = () => {
     fetchEmployees();
   }, []);
 
-  console.log(loading, employees);
-
   return (
-    <div>
+    <div className="dashboard">
       <div className="topbar">
         <h2>Employee List</h2>
 

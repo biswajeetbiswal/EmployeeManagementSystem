@@ -11,7 +11,6 @@ exports.createEmployee = async (req, res) => {
       return res.status(401).json({ error: "Unauthorized: Admin not found." });
     }
 
-    // Admin is authenticated, proceed with employee creation
     const employee = new Employee(req.body.employeeData);
     await employee.save();
     res.status(201).json(employee);
@@ -22,7 +21,6 @@ exports.createEmployee = async (req, res) => {
   }
 };
 
-// Get all employees (with admin authentication)
 exports.getAllEmployees = async (req, res) => {
   try {
     const admin = await Admin.findById(req.query.adminId);
@@ -31,7 +29,6 @@ exports.getAllEmployees = async (req, res) => {
       return res.status(401).json({ error: "Unauthorized: Admin not found." });
     }
 
-    // Admin is authenticated, proceed with fetching employees
     const employees = await Employee.find();
     res.status(200).json(employees);
   } catch (error) {
@@ -41,16 +38,13 @@ exports.getAllEmployees = async (req, res) => {
   }
 };
 
-// Get employee by ID (with admin authentication)
 exports.getEmployeeById = async (req, res) => {
   try {
-    // Check if the admin is authenticated
     const admin = await Admin.findById(req.query.adminId);
     if (!admin) {
       return res.status(401).json({ error: "Unauthorized: Admin not found." });
     }
 
-    // Admin is authenticated, proceed with fetching the employee
     const employee = await Employee.findById(req.params.id);
     if (!employee) {
       return res.status(404).json({ error: "Employee not found." });
@@ -63,17 +57,14 @@ exports.getEmployeeById = async (req, res) => {
   }
 };
 
-// Update an employee (with admin authentication)
 exports.updateEmployee = async (req, res) => {
   try {
-    // Check if the admin is authenticated
     console.log(req.body, req.query);
     const admin = await Admin.findById(req.query.adminId);
     if (!admin) {
       return res.status(401).json({ error: "Unauthorized: Admin not found." });
     }
 
-    // Admin is authenticated, proceed with employee update
     const employee = await Employee.findByIdAndUpdate(req.params.id, req.body, {
       new: true,
     });
@@ -88,16 +79,13 @@ exports.updateEmployee = async (req, res) => {
   }
 };
 
-// Delete an employee (with admin authentication)
 exports.deleteEmployee = async (req, res) => {
   try {
-    // Check if the admin is authenticated
     const admin = await Admin.findById(req.query.adminId);
     if (!admin) {
       return res.status(401).json({ error: "Unauthorized: Admin not found." });
     }
 
-    // Admin is authenticated, proceed with employee deletion
     const employee = await Employee.findByIdAndRemove(req.params.id);
     if (!employee) {
       return res.status(404).json({ error: "Employee not found." });

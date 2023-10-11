@@ -18,7 +18,7 @@ An employee management system where admin can manage employees data in an organi
   - axios( data fetching/ API calls)
 - Backend
 
-  - Nodejs & express( APIs)
+  - Nodejs & express( APIs)/JavaScript
   - MongoDB (Database)
 
   ## References

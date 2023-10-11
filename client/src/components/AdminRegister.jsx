@@ -17,7 +17,7 @@ const AdminRegister = () => {
 
       console.log(res);
 
-      res.status === 200 && navigate("/login");
+      res.status === 201 && navigate("/login");
     } catch (error) {
       console.error("Register failed:", error.response);
     }

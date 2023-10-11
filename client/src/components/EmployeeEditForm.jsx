@@ -69,7 +69,7 @@ const EmployeeEditForm = () => {
   };
 
   return (
-    <div>
+    <div className="form">
       <h2>Edit Employee</h2>
       <form onSubmit={handleSubmit}>
         <div>
